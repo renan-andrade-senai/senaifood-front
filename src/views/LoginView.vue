@@ -9,7 +9,7 @@
                     <form @submit.prevent="autenticar">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label text-light">Nome de usuário</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" v-model="usuario.username">
+                            <input type="text" class="form-control" id="exampleInputEmail1" v-model="usuario.username">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label text-light">Senha</label>
@@ -44,7 +44,8 @@ export default defineComponent({
             try {
                 const response = await http.post("/security/auth/login", this.usuario);
                 localStorage.setItem("token", btoa(response.data.user.token));
-                this.store.setarUsuario(response.data);
+                this.store.setarUsuario({usuario: response.data, data: response.data.dados});
+                this.$router.push("/");
             } catch {
                 this.erro = true;
             }

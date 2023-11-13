@@ -19,21 +19,21 @@ const router = createRouter({
   ]
 })
 
-// router.beforeEach(async (to, from) => {
-//   if (to.path !== "/login") {
-//       const token = atob(localStorage.getItem("token") || '');
-//       if (!token) {
-//         return {path: "/login"}
-//       }
-//       try {
-//           const response = await http.get('security/auth/validate/' + token);
-//           if (response.status >= 400) {
-//               return {path: "/login"}
-//           }
-//       } catch {
-//           return {path: "/login"}
-//       }
-//   }
-// })
+router.beforeEach(async (to, from) => {
+  if (to.path !== "/login") {
+      const token = atob(localStorage.getItem("token") || '');
+      if (!token) {
+        return {path: "/login"}
+      }
+      try {
+          const response = await http.get('security/auth/validate?token=' + token);
+          if (response.status >= 400) {
+              return {path: "/login"}
+          }
+      } catch {
+          return {path: "/login"}
+      }
+  }
+})
 
 export default router
