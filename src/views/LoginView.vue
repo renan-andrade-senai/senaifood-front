@@ -44,7 +44,7 @@ export default defineComponent({
             try {
                 const response = await http.post("/security/auth/login", this.usuario);
                 localStorage.setItem("token", btoa(response.data.user.token));
-                this.store.setarUsuario({usuario: response.data, data: response.data.dados});
+                this.store.setarUsuario({usuario: response.data.user, data: response.data.dados});
                 this.$router.push("/");
             } catch {
                 this.erro = true;
@@ -53,6 +53,8 @@ export default defineComponent({
     },
     setup() {
         const store = useStore();
+        store.$reset();
+        localStorage.removeItem("token");
         return {
             store
         }
