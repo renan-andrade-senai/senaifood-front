@@ -3,8 +3,10 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import http from '@/http'
 import CadastrarRestaurante from '@/components/CadastrarRestaurante.vue'
-import ListaCardapio from '@/components/ListaCardapio.vue'
+import ListarCardapio from '@/components/ListarCardapio.vue'
 import CadastrarCardapio from "@/components/CadastrarCardapio.vue"
+import PageEntregador from '@/components/PageEntregador.vue'
+import CadastroView from '@/views/CadastroView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -25,9 +27,19 @@ const router = createRouter({
       component: CadastrarRestaurante
     },
     {
+      path: "/cadastrar-cliente",
+      name: "cadastrarCliente",
+      component: CadastroView
+    },
+    {
+      path: "/cadastrar-entregador",
+      name: "cadastrarEntregador",
+      component: PageEntregador
+    },
+    {
       path: "/cardapio",
       name: "cardapio",
-      component: ListaCardapio,
+      component: ListarCardapio,
       beforeEnter: beforeRoute
     },
     {

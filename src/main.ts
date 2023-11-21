@@ -2,6 +2,7 @@ import './assets/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "@popperjs/core/index.d.ts"
 import 'bootstrap/dist/js/bootstrap.min.js'
+import "@fortawesome/fontawesome-free/css/all.min.css"
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
