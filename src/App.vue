@@ -26,7 +26,8 @@ onMounted(async () => {
 </template>
 
 <style>
-html, body {
-  background-image: url('assets/variedade-plana-com-deliciosa-comida-brasileira.jpg');
+body {
+  background-image: linear-gradient(to right,#d2474771,#d2474771), url('assets/variedade-plana-com-deliciosa-comida-brasileira.jpg');
+  /* background: url('assets/variedade-plana-com-deliciosa-comida-brasileira.jpg'), linear-gradient(to right, #6DB3F2, #6DB3F2); */
 }
 </style>

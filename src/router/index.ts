@@ -9,6 +9,8 @@ import PageEntregador from '@/components/PageEntregador.vue'
 import CadastroView from '@/views/CadastroView.vue'
 import MostrarAvaliacaoEntregador from '@/components/MostrarAvaliacaoEntregador.vue'
 import MostrarAvaliacaoRestaurante from '@/components/MostrarAvaliacaoRestaurante.vue'
+import FazerAvaliacaoRestaurante from '@/components/FazerAvaliacaoRestaurante.vue'
+import FazerAvaliacaoEntregador from '@/components/FazerAvaliacaoEntregador.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -60,6 +62,18 @@ const router = createRouter({
       path: '/mostrarAvaliacoesRestaurante',
       name: 'mostrarAvaliacoesRestaurante',
       component: MostrarAvaliacaoRestaurante,
+      beforeEnter: beforeRoute,
+    },
+    {
+      path: '/fazerAvaliacaoRestaurante/:id',
+      name: 'fazerAvaliacaoRestaurante',
+      component: FazerAvaliacaoRestaurante,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/fazerAvaliacaoEntregador/:id',
+      name: 'fazerAvaliacaoEntregador',
+      component: FazerAvaliacaoEntregador,
       beforeEnter: beforeRoute
     }
   ]
