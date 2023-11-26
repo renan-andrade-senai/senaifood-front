@@ -19,42 +19,55 @@
                             <li><RouterLink to="/cadastrar-cardapio" class="dropdown-item">Cadastro</RouterLink></li>
                         </ul>
                     </li>
-                    <li class="nav-item" v-if="modoCliente">
-                        <RouterLink class="nav-link active text-light" to="/avaliacoes">Avaliações</RouterLink>
+                    <li class="nav-item dropdown" v-if="modoCliente">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Avaliações
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <RouterLink to="/mostrarAvaliacoesRestaurante" class="dropdown-item">Avaliações de Restaurantes
+                                </RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink to="/mostrarAvaliacoesEntregador" class="dropdown-item"> Avaliações de Entregadores
+                                </RouterLink>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item" v-if="modoEntregador">
-                        <RouterLink to="/entregas" class="nav-link text-light">Entregas</RouterLink>
-                    </li>
-                </ul>
-                <span class="nav-item">
-                    <a class="nav-link text-light" @click="$router.push('/login')">{{textoMenuLogin}}</a>
-                </span>
+                        <li class="nav-item" v-if="modoEntregador">
+                            <RouterLink to="/entregas" class="nav-link text-light">Entregas</RouterLink>
+                        </li>
+                    </ul>
+                    <span class="nav-item">
+                        <a class="nav-link text-light" @click="$router.push('/login')">{{textoMenuLogin}}</a>
+                    </span>
+                </div>
             </div>
-        </div>
-    </nav>
-</template>
-
-<script lang="ts">
-import { useStore } from "@/stores/appStore";
-import { computed, defineComponent } from "vue";
-
-export default defineComponent({
-    name: "NavMenu",
-    computed: {
-        textoMenuLogin() {
-            return this.store.usuario.token ? 'Logout': 'Login';
+        </nav>
+    </template>
+    
+    <script lang="ts">
+    import { useStore } from "@/stores/appStore";
+    import { computed, defineComponent } from "vue";
+    
+    export default defineComponent({
+        name: "NavMenu",
+        computed: {
+            textoMenuLogin() {
+                return this.store.usuario.token ? 'Logout': 'Login';
+            }
+        },
+        setup() {
+            const store = useStore();
+            const modoRestaurante = computed(() => store.usuario.tipoUsuario == 'R');
+            const modoCliente = computed(() => store.usuario.tipoUsuario == 'C');
+            const modoEntregador = computed(() => store.usuario.tipoUsuario == 'E');
+            return {
+                modoCliente, modoEntregador, modoRestaurante, store
+            }
         }
-    },
-    setup() {
-        const store = useStore();
-        const modoRestaurante = computed(() => store.usuario.tipoUsuario == 'R');
-        const modoCliente = computed(() => store.usuario.tipoUsuario == 'C');
-        const modoEntregador = computed(() => store.usuario.tipoUsuario == 'E');
-        return {
-            modoCliente, modoEntregador, modoRestaurante, store
-        }
-    }
-})
+    })
 </script>
 
 <style scoped>

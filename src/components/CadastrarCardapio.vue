@@ -29,9 +29,11 @@
    </template>
    
    <script lang="ts">
-   import { defineComponent } from 'vue';
+   import { computed, defineComponent } from 'vue';
    import http from '@/http';
    import type Cardapio from '@/interfaces/Cardapio';
+import { useStore } from '@/stores/appStore';
+import type Restaurante from '@/interfaces/Restaurante';
    
    export default defineComponent({
     name: 'Cardapio',
@@ -42,10 +44,12 @@
     },
     methods: {
        async cadastrarCardapio() {
+         this.cardapio.restauranteDTO = this.restaurante;
          await http.post("/restaurante/cardapio", this.cardapio);
          this.$emit("aoSalvarCardapio");
        },
        async alterarCardapio() {
+         this.cardapio.restauranteDTO = this.restaurante;
          await http.put("/restaurante/cardapio", this.cardapio)
          this.$emit("aoAlterarCardapio");
        },
@@ -65,9 +69,16 @@
          } else {
            return "Cadastrar"
       
-       }
+          }
+        },
+    },
+    setup() {
+      const store = useStore();
+      const restaurante = computed(() => store.dados as Restaurante);
+      return {
+        restaurante
+      }
     }
-}
 })
    </script>
    

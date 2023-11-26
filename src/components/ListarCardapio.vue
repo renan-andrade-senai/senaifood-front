@@ -34,20 +34,19 @@
           
       </tbody>
   </table>
-<Modal :produto="produto" id-modal="idModal">
+<Modal :produto="produto" id-modal="idModal"/>
 
-
-
-</Modal>  
 </template>
 
 
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue';
+import { computed, defineComponent, type PropType } from 'vue';
 import type Cardapio from '@/interfaces/Cardapio';
 import http from '@/http';
 import Modal from './Modal.vue';
+import { useStore } from '@/stores/appStore';
+import type Restaurante from '@/interfaces/Restaurante';
 
 
 export default defineComponent({
@@ -70,10 +69,18 @@ export default defineComponent({
         },
         editarCardapio(cardapio: Cardapio) {
             this.produto = cardapio;
+            this.produto.restauranteDTO = this.restaurante;
         }
     },
     emits: ["aoExcluirCardapio", "aoAlterarCardapio"],
-    components: { Modal }
+    components: { Modal },
+    setup() {
+        const store = useStore();
+        const restaurante = computed(() => store.dados as Restaurante);
+        return {
+            restaurante
+        }
+    }
 })
 </script>
 

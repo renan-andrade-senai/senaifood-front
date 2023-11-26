@@ -1,3 +1,5 @@
+import type Restaurante from "./Restaurante";
+
 export default interface Cardapio{
     
     idcardapio: number;
@@ -6,4 +8,5 @@ export default interface Cardapio{
     preco: number;
     tempoPreparo: number;
     caminhoFoto: string;
+    restauranteDTO: Restaurante;
 }

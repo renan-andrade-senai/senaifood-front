@@ -7,6 +7,8 @@ import ListarCardapio from '@/components/ListarCardapio.vue'
 import CadastrarCardapio from "@/components/CadastrarCardapio.vue"
 import PageEntregador from '@/components/PageEntregador.vue'
 import CadastroView from '@/views/CadastroView.vue'
+import MostrarAvaliacaoEntregador from '@/components/MostrarAvaliacaoEntregador.vue'
+import MostrarAvaliacaoRestaurante from '@/components/MostrarAvaliacaoRestaurante.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -46,6 +48,18 @@ const router = createRouter({
       path: "/cadastrar-cardapio",
       name: "cadastrarCardapio",
       component: CadastrarCardapio,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/mostrarAvaliacoesEntregador',
+      name: 'mostrarAvaliacoesEntregador',
+      component: MostrarAvaliacaoEntregador,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/mostrarAvaliacoesRestaurante',
+      name: 'mostrarAvaliacoesRestaurante',
+      component: MostrarAvaliacaoRestaurante,
       beforeEnter: beforeRoute
     }
   ]
