@@ -19,6 +19,12 @@
                             <li><RouterLink to="/cadastrar-cardapio" class="dropdown-item">Cadastro</RouterLink></li>
                         </ul>
                     </li>
+                    <li class="nav-item" v-if="modoCliente">
+                        <RouterLink to="/lista-restaurantes" class="nav-link text-light">Restaurantes</RouterLink>
+                    </li>
+                    <li class="nav-item" v-if="modoCliente">
+                        <RouterLink to="/Carrinho" class="nav-link text-light">Carrinho</RouterLink>
+                    </li>
                     <li class="nav-item dropdown" v-if="modoCliente">
                         <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">

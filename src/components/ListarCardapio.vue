@@ -58,7 +58,7 @@ export default defineComponent({
         };
     },
     async mounted() {
-        const response = await http.get("/restaurante/cardapio");
+        const response = await http.get("/restaurante/cardapio/" + this.restaurante.idrestaurante);
         this.cardapios = response.data;
     },
     methods: {

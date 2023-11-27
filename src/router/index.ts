@@ -11,6 +11,9 @@ import MostrarAvaliacaoEntregador from '@/components/MostrarAvaliacaoEntregador.
 import MostrarAvaliacaoRestaurante from '@/components/MostrarAvaliacaoRestaurante.vue'
 import FazerAvaliacaoRestaurante from '@/components/FazerAvaliacaoRestaurante.vue'
 import FazerAvaliacaoEntregador from '@/components/FazerAvaliacaoEntregador.vue'
+import Restaurantes from '@/views/Restaurantes.vue'
+import Cardapio from '@/views/Cardapio.vue'
+import Carrinho from '@/views/Carrinho.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -74,6 +77,24 @@ const router = createRouter({
       path: '/fazerAvaliacaoEntregador/:id',
       name: 'fazerAvaliacaoEntregador',
       component: FazerAvaliacaoEntregador,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/lista-restaurantes',
+      name: 'listaRestaurantes',
+      component: Restaurantes,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/cardapio-cliente/:id',
+      name: 'cardapioCliente',
+      component: Cardapio,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/Carrinho',
+      name: 'carrinho',
+      component: Carrinho,
       beforeEnter: beforeRoute
     }
   ]
