@@ -6,6 +6,7 @@ import CadastrarRestaurante from '@/components/CadastrarRestaurante.vue'
 import ListarCardapio from '@/components/ListarCardapio.vue'
 import CadastrarCardapio from "@/components/CadastrarCardapio.vue"
 import PageEntregador from '@/components/PageEntregador.vue'
+import PageEntrega from '@/components/PageEntrega.vue'
 import CadastroView from '@/views/CadastroView.vue'
 import MostrarAvaliacaoEntregador from '@/components/MostrarAvaliacaoEntregador.vue'
 import MostrarAvaliacaoRestaurante from '@/components/MostrarAvaliacaoRestaurante.vue'
@@ -14,6 +15,7 @@ import FazerAvaliacaoEntregador from '@/components/FazerAvaliacaoEntregador.vue'
 import Restaurantes from '@/views/Restaurantes.vue'
 import Cardapio from '@/views/Cardapio.vue'
 import Carrinho from '@/views/Carrinho.vue'
+import TelaFinal from '@/views/TelaFinal.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -39,8 +41,14 @@ const router = createRouter({
       component: CadastroView
     },
     {
-      path: "/cadastrar-entregador",
-      name: "cadastrarEntregador",
+      path: "/entrega",
+      name: 'entrega',
+      component: PageEntrega,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: "/entregador",
+      name: 'entregador',
       component: PageEntregador
     },
     {
@@ -95,6 +103,11 @@ const router = createRouter({
       path: '/Carrinho',
       name: 'carrinho',
       component: Carrinho,
+      beforeEnter: beforeRoute
+    },
+    {
+      path: '/TelaFinal',
+      component: TelaFinal,
       beforeEnter: beforeRoute
     }
   ]

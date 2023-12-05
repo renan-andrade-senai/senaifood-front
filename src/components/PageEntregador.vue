@@ -1,12 +1,8 @@
 <template>
-    <div class="row justify-content-center">
-        <div class="col-10">
-            <h1>Entregadores</h1>
-            <!-- <ListaEntregador :entregadores="entregadores" @ao-excluir-entregador="excluirEntregador"/> -->
+    <div class="container" style="background-color: rgb(255, 90, 90);">
+        <div class="center">
+    <CadastroEntregador />
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <CadastrarEntregador @ao-salvar-entregador="adicionarEntregador" class="col-10"/>
     </div>
 </template>
 
@@ -16,6 +12,7 @@ import type Entregador from '@/interfaces/Entregador';
 import { defineComponent, computed } from 'vue';
 import ListaEntregador from './ListaEntregador.vue'
 import CadastrarEntregador from './CadastrarEntregador.vue';
+import CadastroEntregador from './CadastroEntregador.vue';
 // import { useStore } from '@/store';
 
 export default defineComponent({
@@ -44,7 +41,8 @@ export default defineComponent({
     // },
     components: {
     ListaEntregador,
-    CadastrarEntregador
+    CadastrarEntregador,
+    CadastroEntregador
     
 },
 // setup() {
@@ -59,3 +57,11 @@ export default defineComponent({
 //     }
 })
 </script>
+
+<style scoped>
+.container {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+</style>

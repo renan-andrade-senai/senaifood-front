@@ -7,14 +7,15 @@
       <p class="text-center h1 text-light">Senai Food</p>
       <RouterLink to="/cadastrar-cliente" class="btn btn-primary">Ainda não é cliente? Cadastre-se</RouterLink>
       <RouterLink to="/cadastrar-restaurante" class="btn btn-primary">Seja um restaurante parceiro</RouterLink>
-      <RouterLink to="/cadastrar-entregador" class="btn btn-primary">Seja um entregador parceiro</RouterLink>
+      <RouterLink to="/entregador" class="btn btn-primary">Seja um entregador parceiro</RouterLink>
     </main>
+    <video autoplay loop src="../assets/party.mp4" width="800" height="450"></video>
   </div>
 </template>
 
 <style scoped>
 main {
-  height: 40vh;
+  height: 30vh;
   background-color: var(--cor-senai-food);
   > p {
     font-family: 'Knewave', sans-serif;

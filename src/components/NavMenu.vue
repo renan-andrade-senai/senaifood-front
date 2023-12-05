@@ -42,7 +42,7 @@
                         </ul>
                     </li>
                         <li class="nav-item" v-if="modoEntregador">
-                            <RouterLink to="/entregas" class="nav-link text-light">Entregas</RouterLink>
+                            <RouterLink to="/entrega" class="nav-link text-light">Entregas</RouterLink>
                         </li>
                     </ul>
                     <span class="nav-item">
